@@ -12,6 +12,7 @@ import java.util.List;
  * @Date 2019/4/4
  */
 public class Test01 {
+//    volatile修饰List集合
     volatile List<Object> lists = new ArrayList<>();
     void adds(Object object) {
         lists.add(object);
