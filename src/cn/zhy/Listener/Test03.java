@@ -13,11 +13,11 @@ public class Test03 {
     //    volatile List<Object> lists = new ArrayList<>();
     int count = 0;
 
-     void adds() {
+    void adds() {
         count++;
     }
 
-     int size() {
+    int size() {
         return count;
 
     }
@@ -28,13 +28,16 @@ public class Test03 {
         new Thread(() -> {
             synchronized (t) {
                 try {
+//                    监听线程启动，并且此时进入了wait状态，并且释放了锁资源
                     t.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println("daole");
+//                打印完提示信息，并唤醒添加元素的线程
                 t.notify();
                 try {
+//                    释放锁，因为监听线程的目的已经实现，为了节约资源让其等待1s后关闭
                     t.wait(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -48,6 +51,7 @@ public class Test03 {
             synchronized (t) {
                 for (int i = 1; i <= 10; i++) {
                     t.adds();
+//                    判断集合中的元素个数，当到达5时 唤醒监听线程并且进入wait状态并且释放锁。
                     if (t.size() == 5) {
                         t.notify();
                         try {
