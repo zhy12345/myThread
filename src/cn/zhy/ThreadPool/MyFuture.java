@@ -18,7 +18,7 @@ public class MyFuture {
 
         new Thread(task).start();
 //        阻塞
-        System.out.println("222222222222222222222");
+//        System.out.println("222222222222222222222");
         System.out.println(task.get());
 //        System.out.println(task.get(2000,TimeUnit.MILLISECONDS));
 
