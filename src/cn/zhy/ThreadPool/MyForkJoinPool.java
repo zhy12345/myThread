@@ -1,6 +1,7 @@
 package cn.zhy.ThreadPool;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
@@ -53,13 +54,13 @@ public class MyForkJoinPool {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
 //      System.out.println(Arrays.toString(num));
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         AddTask task = new AddTask(0, num.length);
         forkJoinPool.execute(task);
-        Integer sumThis = task.join();
-        System.out.println(sumThis);
+//        Integer sumThis = task.join();
+        System.out.println(task.get());
         System.in.read();
     }
 }
