@@ -31,6 +31,7 @@ public class Test04 {
         new Thread(() -> {
             try {
                 countDownLatch.await();
+                System.out.println("The  Frist  ............");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -43,6 +44,7 @@ public class Test04 {
                     t.adds();
                     if (t.size() == 5) {
                         countDownLatch.countDown();
+                        System.out.println("The  second  ............");
                     }
                     System.out.println(t.size());
                     try {

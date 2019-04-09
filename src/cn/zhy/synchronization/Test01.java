@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * @Author zhy
  * @Date 2019/4/3
  */
-public class Test01 {
+public class MySynchronized {
 
     synchronized void m1() {
         System.out.println("我是同步方法..........开始");
@@ -34,7 +34,7 @@ public class Test01 {
 
 
     public static void main(String[] args) {
-        Test01 t = new Test01();
+        MySynchronized t = new MySynchronized();
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
